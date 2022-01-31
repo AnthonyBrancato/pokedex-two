@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const { REACT_APP_API_BASE_URL } = process.env;
 
@@ -14,12 +14,12 @@ export interface IPokemonsType {
 
 const initialPokemonsTypeState = {
   count: 0,
-  next: "",
-  previous: "",
+  next: '',
+  previous: '',
   results: [
     {
-      name: "",
-      url: "",
+      name: '',
+      url: '',
     },
   ],
 };
@@ -43,10 +43,10 @@ const usePokemonsTypeQuery = () => {
       } catch (error) {
         setIsError(true);
       }
-      setIsLoading(true);
+      setIsLoading(false);
     };
     fetchData();
-  }, [isError, isLoading]);
+  }, []);
   return {
     pokemonsType,
     isError,
