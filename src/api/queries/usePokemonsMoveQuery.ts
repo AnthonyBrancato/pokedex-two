@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { initialPokemonsTypeState } from '../../constants';
-import { IPokemonsType } from 'interfaces';
+import { initialPokemonsMoveState } from '../../constants';
+import { IPokemonsMove } from 'interfaces';
 import { REACT_APP_API_BASE_URL } from 'config';
 
-const usePokemonsTypeQuery = () => {
-  const [pokemonsType, setPokemonsType] = React.useState<IPokemonsType>(
-    initialPokemonsTypeState
+const usePokemonsMoveQuery = () => {
+  const [pokemonsMove, setPokemonsMove] = React.useState<IPokemonsMove>(
+    initialPokemonsMoveState
   );
   const [isError, setIsError] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -16,10 +16,10 @@ const usePokemonsTypeQuery = () => {
       setIsError(false);
       setIsLoading(true);
       try {
-        const res = await fetch(`${REACT_APP_API_BASE_URL}/type/`);
+        const res = await fetch(`${REACT_APP_API_BASE_URL}/move/`);
         const result = await res.json();
 
-        setPokemonsType(result);
+        setPokemonsMove(result);
       } catch (error) {
         setIsError(true);
       }
@@ -28,9 +28,9 @@ const usePokemonsTypeQuery = () => {
     fetchData();
   }, []);
   return {
-    pokemonsType,
+    pokemonsMove,
     isError,
     isLoading,
   };
 };
-export default usePokemonsTypeQuery;
+export default usePokemonsMoveQuery;
